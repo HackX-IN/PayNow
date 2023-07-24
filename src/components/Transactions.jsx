@@ -1,18 +1,20 @@
 import {
-  StyleSheet,
-  Text,
   View,
-  Pressable,
+  Text,
   FlatList,
+  StyleSheet,
   Image,
-  ScrollView,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React from "react";
-import { AntDesign } from "@expo/vector-icons";
+
 const Data = [
+  // September
   {
     id: 1,
+    month: "September",
+    year: 2018,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
     name: "Item 1",
@@ -21,83 +23,87 @@ const Data = [
   },
   {
     id: 2,
+    month: "September",
+    year: 2018,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
     name: "Item 2",
     time: "1h 45m",
     money: "+$19.50",
   },
-  {
-    id: 3,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
-    name: "Item 3",
-    time: "3h 15m",
-    money: "-$32.75",
-  },
-  {
-    id: 4,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
-    name: "Item 4",
-    time: "1h 10m",
-    money: "+$12.99",
-  },
-  {
-    id: 5,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
-    name: "Item 5",
-    time: "2h 0m",
-    money: "+$28.00",
-  },
+
+  // October
   {
     id: 6,
+    month: "October",
+    year: 2018,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
-    name: "Item 6",
-    time: "1h 0m",
-    money: "+$10.00",
+    name: "Item 1",
+    time: "2h 30m",
+    money: "-$25.99",
   },
   {
     id: 7,
+    month: "October",
+    year: 2018,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
-    name: "Item 7",
-    time: "2h 15m",
-    money: "$23.45",
+    name: "Item 1",
+    time: "2h 30m",
+    money: "-$25.99",
+  },
+  // Add more items for October...
+  // November
+  {
+    id: 11,
+    month: "November",
+    year: 2018,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
+    name: "Item 1",
+    time: "2h 30m",
+    money: "-$25.99",
   },
   {
-    id: 8,
+    id: 12,
+    month: "November",
+    year: 2018,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
-    name: "Item 8",
-    time: "2h 15m",
-    money: "$23.45",
+    name: "Item 1",
+    time: "2h 30m",
+    money: "-$25.99",
   },
   {
-    id: 9,
+    id: 13,
+    month: "November",
+    year: 2018,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
-    name: "Item 9",
-    time: "2h 15m",
-    money: "$23.45",
+    name: "Item 1",
+    time: "2h 30m",
+    money: "-$25.99",
   },
+  {
+    id: 14,
+    month: "November",
+    year: 2018,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwoWqXPCMTcglHR0r0hb2VoUo8sbkCU2OfHHoBKQk&s",
+    name: "Item 1",
+    time: "2h 30m",
+    money: "-$25.99",
+  },
+  // Add more items for November...
+  // Continue for other months
 ];
 
-const LastTransaction = () => {
+const Transactions = () => {
   const renderItem = ({ item, index }) => {
-    const isOdd = item.id % 2 !== 0;
-    const caretColor = isOdd ? "#F8bb10" : "#1a87dd";
-    const caretName = isOdd ? "caretup" : "caretdown";
     return (
       <TouchableOpacity style={styles.itemContainer}>
         <Image source={{ uri: item.image }} style={styles.image} />
-        <View
-          style={{ position: "absolute", bottom: 0, left: 35, marginBottom: 3 }}
-        >
-          <AntDesign name={caretName} size={20} color={caretColor} />
-        </View>
         <View style={styles.itemDetails}>
           <View style={{ flexDirection: "column" }}>
             <Text style={styles.itemName}>{item.name}</Text>
@@ -108,53 +114,46 @@ const LastTransaction = () => {
       </TouchableOpacity>
     );
   };
+
+  // Group data by month and year
+  const groupedData = Data.reduce((acc, item) => {
+    const key = item.month + "-" + item.year; // Add the year to the key
+    acc[key] = acc[key] ? [...acc[key], item] : [item];
+    return acc;
+  }, {});
+
+  // Extract individual month items
+  const monthItems = Object.values(groupedData);
+
   return (
     <ScrollView
+      contentContainerStyle={{ marginTop: 15, padding: 15 }}
       showsVerticalScrollIndicator={false}
-      style={{ marginBottom: 55 }}
     >
-      <View style={{ marginTop: 10, padding: 20 }}>
-        <View
-          style={{
-            justifyContent: "space-between",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Text style={styles.Text1}>Last Transactions</Text>
-          <Pressable style={{ padding: 5 }}>
-            <Text style={styles.Text2}>View All</Text>
-          </Pressable>
+      {monthItems.map((item, index) => (
+        <View key={index}>
+          <Text style={styles.monthLabel}>
+            {item[0].month} {item[0].year}
+          </Text>
+          <FlatList
+            data={item}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+          />
         </View>
-
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={Data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()} // Specify unique key extractor
-        />
-      </View>
+      ))}
     </ScrollView>
   );
 };
 
-export default LastTransaction;
+export default Transactions;
 
 const styles = StyleSheet.create({
-  Text1: {
-    fontSize: 16,
-    color: "black",
-    fontWeight: "bold",
-  },
-  Text2: {
-    fontSize: 14,
-    color: "#1a87dd",
-    fontWeight: "700",
-  },
   itemContainer: {
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
+    marginBottom: 10,
   },
   image: {
     width: 50,
@@ -180,5 +179,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "black",
+  },
+  monthLabel: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
 });

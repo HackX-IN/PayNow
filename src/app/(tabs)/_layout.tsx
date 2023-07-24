@@ -1,11 +1,12 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import Colors from '@/constants/Colors';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Link, Tabs } from "expo-router";
+import { Pressable, useColorScheme, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import Colors from "@/constants/Colors";
+import { Platform } from "react-native";
 
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
@@ -18,17 +19,17 @@ export default function TabLayout() {
     <View style={{ flex: 1 }}>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: '#000',
+          tabBarActiveTintColor: "#000",
           tabBarStyle: {
-            backgroundColor: '#f3f3f5',
-            position: 'absolute',
-            bottom: 20,
+            backgroundColor: "#f3f3f5",
+            position: "absolute",
+            bottom: 16,
             left: 20,
             right: 20,
             height: 60,
-            paddingHorizontal:10,
+            paddingHorizontal: 10,
             borderRadius: 20,
-            shadowColor: '#000',
+            shadowColor: "#000",
             shadowOffset: {
               width: 0,
               height: 2,
@@ -37,18 +38,17 @@ export default function TabLayout() {
             zIndex: 999,
           },
           headerShown: false,
-        
         }}
       >
-       <Tabs.Screen
+        <Tabs.Screen
           name="index"
           options={{
-            title: 'Home',
+            title: "Home",
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
-                name={focused ? 'home' : 'home-outline'}
+                name={focused ? "home" : "home-outline"}
                 size={28}
-                color={focused ? color : 'gray'}
+                color={focused ? color : "gray"}
                 style={{ marginBottom: -3 }}
               />
             ),
@@ -59,7 +59,7 @@ export default function TabLayout() {
                     <FontAwesome
                       name="info-circle"
                       size={25}
-                      color={Colors[colorScheme ?? 'light'].text}
+                      color={Colors[colorScheme ?? "light"].text}
                       style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                     />
                   )}
@@ -71,12 +71,12 @@ export default function TabLayout() {
         <Tabs.Screen
           name="Transaction"
           options={{
-            title: 'Transaction',
+            title: "Transaction",
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
-                name={focused ? 'swap-vertical' : 'swap-vertical-outline'}
+                name={focused ? "swap-vertical" : "swap-vertical-outline"}
                 size={28}
-                color={focused ? color : 'gray'}
+                color={focused ? color : "gray"}
                 style={{ marginBottom: -3 }}
               />
             ),
@@ -85,12 +85,12 @@ export default function TabLayout() {
         <Tabs.Screen
           name="Contact"
           options={{
-            title: 'Contact',
+            title: "Contact",
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
-                name={focused ? 'md-people' : 'md-people-outline'}
+                name={focused ? "md-people" : "md-people-outline"}
                 size={28}
-                color={focused ? color : 'gray'}
+                color={focused ? color : "gray"}
                 style={{ marginBottom: -3 }}
               />
             ),
@@ -99,12 +99,12 @@ export default function TabLayout() {
         <Tabs.Screen
           name="Profile"
           options={{
-            title: 'Profile',
+            title: "Profile",
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
-                name={focused ? 'person' : 'person-outline'}
+                name={focused ? "person" : "person-outline"}
                 size={28}
-                color={focused ? color : 'gray'}
+                color={focused ? color : "gray"}
                 style={{ marginBottom: -3 }}
               />
             ),
@@ -113,15 +113,14 @@ export default function TabLayout() {
       </Tabs>
       <View
         style={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           left: 0,
           right: 0,
           height: 95,
-          backgroundColor: '#fff',
+          backgroundColor: "#fff",
           borderTopLeftRadius: 20,
-          
-       
+          borderTopRightRadius: 20,
         }}
       >
         {/* Add content for the fixed view here */}
