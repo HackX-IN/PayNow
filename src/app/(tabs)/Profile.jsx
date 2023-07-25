@@ -15,12 +15,13 @@ export default function TabTwoScreen() {
               fontWeight: "bold",
               flex: 1,
               textAlign: "center",
-              marginLeft: 15,
+              marginLeft: 20,
+              color: "#FFf2ee",
             }}
           >
             My Profile
           </Text>
-          <Feather name="edit-2" size={24} color="#1a87dd" />
+          <Feather name="edit-2" size={24} color="#FFf2ee" />
         </View>
         <View style={styles.secondHeader}>
           <Image
@@ -29,7 +30,14 @@ export default function TabTwoScreen() {
               uri: "https://www.w3schools.com/howto/img_avatar.png",
             }}
           />
-          <Text style={{ fontSize: 20, fontWeight: "700", margin: 8 }}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "700",
+              margin: 15,
+              color: "#FFf2ee",
+            }}
+          >
             Inamul Hasan
           </Text>
         </View>
@@ -57,13 +65,13 @@ const styles = StyleSheet.create({
   header: {
     padding: 10,
     height: 250,
-    backgroundColor: "#f3f4f5",
+    backgroundColor: "rgba(52,145,219,1)",
   },
   title: {
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "#f3f4f5",
+    backgroundColor: "rgba(52,145,219,1)",
     marginTop: 35,
   },
   searchIcon: {
@@ -74,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 12,
-    backgroundColor: "#f3f4f5",
+    backgroundColor: "rgba(52,145,219,1)",
   },
   Container2: {
     alignItems: "center",

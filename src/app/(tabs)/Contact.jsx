@@ -6,9 +6,11 @@ import {
   FlatList,
   TouchableOpacity,
   Linking,
+  Alert,
+  ScrollView,
 } from "react-native";
 import * as Contacts from "expo-contacts";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 export default function App() {
   const [contacts, setContacts] = useState([]);
@@ -23,7 +25,6 @@ export default function App() {
       const { data } = await Contacts.getContactsAsync({
         fields: [Contacts.Fields.PhoneNumbers, Contacts.Fields.DisplayName],
       });
-      console.log(data);
       setContacts(data);
     }
   };
@@ -32,13 +33,16 @@ export default function App() {
     Linking.openURL(`tel:${phoneNumber}`);
   };
 
+  const handleSendMoney = (contactName) => {
+    Alert.alert(`Sending money to ${contactName}`);
+  };
+
+  const handleReceiveMoney = (contactName) => {
+    Alert.alert(`Receiving money from ${contactName}`);
+  };
+
   const renderContactItem = ({ item }) => (
-    <TouchableOpacity
-      style={styles.contactItem}
-      onPress={() =>
-        handleCall(item.phoneNumbers ? item.phoneNumbers[0].number : "")
-      }
-    >
+    <View style={styles.contactItem}>
       <MaterialIcons name="person" size={24} color="#666" style={styles.icon} />
       <View style={styles.contactDetails}>
         <Text style={styles.contactName}>{item.name}</Text>
@@ -46,23 +50,53 @@ export default function App() {
           {item.phoneNumbers ? item.phoneNumbers[0].number : "N/A"}
         </Text>
       </View>
-      <TouchableOpacity
-        onPress={() =>
-          handleCall(item.phoneNumbers ? item.phoneNumbers[0].number : "")
-        }
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderRadius: 10,
+          backgroundColor: "#F0F0F0",
+        }}
       >
-        <MaterialIcons
-          name="call"
-          size={24}
-          color="#007AFF"
-          style={styles.icon}
-        />
-      </TouchableOpacity>
-    </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => handleSendMoney(item.name)}
+          style={{ flexDirection: "row", alignItems: "center" }}
+        >
+          <Text
+            style={{
+              marginRight: 5,
+              fontSize: 14,
+              fontWeight: "500",
+              textAlign: "center",
+            }}
+          >
+            Send
+          </Text>
+          <Ionicons name="send" size={24} color="#4caf50" style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => handleReceiveMoney(item.name)}
+          style={{ flexDirection: "row", alignItems: "center", marginLeft: 10 }}
+        >
+          <Text
+            style={{
+              marginRight: 5,
+              fontSize: 14,
+              fontWeight: "500",
+              textAlign: "center",
+            }}
+          >
+            Request
+          </Text>
+          <Ionicons name="send" size={24} color="red" style={styles.icon} />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.contactsList}>
         {contacts.length > 0 ? (
           <FlatList
@@ -75,14 +109,14 @@ export default function App() {
           <Text style={styles.details}>No contacts found</Text>
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#fff",
     paddingVertical: 20,
     paddingHorizontal: 15,
   },
@@ -100,7 +134,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   contactItem: {
-    backgroundColor: "#fff",
+    backgroundColor: "#F0F0F0",
     borderRadius: 8,
     padding: 10,
     marginBottom: 5,
