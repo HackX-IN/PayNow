@@ -88,7 +88,7 @@ const index = () => {
             gap: 5,
           }}
         >
-          <AntDesign name="caretup" size={24} color="white" />
+          <AntDesign name="caretdown" size={24} color="white" />
           <Text style={styles.btnText2}>Request Money</Text>
         </TouchableOpacity>
       </View>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   btn: {
     width: "100%",
     padding: 20,
-    marginTop: 20,
+    marginTop: 15,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
@@ -149,5 +149,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "white",
     fontWeight: "600",
+    marginBottom: -15,
   },
 });

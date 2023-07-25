@@ -1,6 +1,6 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Link, Tabs } from "expo-router";
-import { Pressable, useColorScheme, View } from "react-native";
+import { Pressable, useColorScheme, View, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 
@@ -25,15 +25,15 @@ export default function TabLayout() {
             bottom: 16,
             left: 20,
             right: 20,
-            height: 60,
-            paddingHorizontal: 10,
+            height: Platform.OS === "ios" ? 70 : 60,
+            paddingHorizontal: Platform.OS === "ios" ? 10 : 5,
             borderRadius: 20,
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            elevation: 3,
+            // shadowColor: "#000",
+            // shadowOffset: {
+            //   width: 0,
+            //   height: 2,
+            // },
+            // elevation: 3,
             zIndex: 999,
           },
           headerShown: false,
@@ -110,20 +110,22 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
-      <View
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 95,
-          backgroundColor: "rgba(26,135,221,0.8)",
-          borderTopLeftRadius: 30,
-          borderTopRightRadius: 30,
-        }}
-      >
-        {/* Add content for the fixed view here */}
-      </View>
+      {Platform.OS === "android" ? (
+        <View
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 95,
+            backgroundColor: "rgba(26,135,221,0.8)",
+            borderTopLeftRadius: 30,
+            borderTopRightRadius: 30,
+          }}
+        >
+          {/* Add content for the fixed view here */}
+        </View>
+      ) : null}
     </View>
   );
 }
