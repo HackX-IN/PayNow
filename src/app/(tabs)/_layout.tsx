@@ -3,7 +3,6 @@ import { Link, Tabs } from "expo-router";
 import { Pressable, useColorScheme, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
-import { Platform } from "react-native";
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
@@ -21,7 +20,7 @@ export default function TabLayout() {
         screenOptions={{
           tabBarActiveTintColor: "#000",
           tabBarStyle: {
-            backgroundColor: "#f3f3f5",
+            backgroundColor: "#f3f4f5",
             position: "absolute",
             bottom: 16,
             left: 20,
@@ -118,9 +117,9 @@ export default function TabLayout() {
           left: 0,
           right: 0,
           height: 95,
-          backgroundColor: "#fff",
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+          backgroundColor: "rgba(26,135,221,0.8)",
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
         }}
       >
         {/* Add content for the fixed view here */}

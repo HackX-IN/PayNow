@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
-import LastTransaction from '../../components/LastTransaction'
+import LastTransaction from "../../components/LastTransaction";
 const index = () => {
   return (
     <View style={styles.container}>
@@ -92,7 +92,7 @@ const index = () => {
           <Text style={styles.btnText2}>Request Money</Text>
         </TouchableOpacity>
       </View>
-      <LastTransaction/>
+      <LastTransaction />
     </View>
   );
 };
@@ -102,6 +102,7 @@ export default index;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
   },
   header: {
     height: 300,
